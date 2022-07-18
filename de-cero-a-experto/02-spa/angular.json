@@ -24,12 +24,10 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/assets/libs/css/boot/bootstrap.min.css"
-             
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
-              "src/assets/libs/js/boot/bootstrap.min.js"
-              
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
           "configurations": {
@@ -102,5 +100,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }
