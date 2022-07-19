@@ -1,4 +1,6 @@
-.main-container{margin-top: 10px ;}
+.main-container {
+  margin-top: 10px;
+}
 
 
 /* Animaciones */
@@ -29,4 +31,8 @@
 
 .fadeIn {
   animation-name: fadeIn;
+}
+
+.img-logo {
+  width: 150px;
 }

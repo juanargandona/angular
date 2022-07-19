@@ -16,6 +16,8 @@ import { HeroesComponent } from './components/heroes/heroes.component';
 // Services
 import { HeroesService } from './components/services/heroes.service';
 import { HeroeComponent } from './components/heroe/heroe.component';
+import { HeroesBuscarComponent } from './components/heroes-buscar/heroes-buscar.component';
+import { HeroeTarjetaComponent } from './components/heroe-tarjeta/heroe-tarjeta.component';
 
 
 
@@ -27,7 +29,9 @@ import { HeroeComponent } from './components/heroe/heroe.component';
     HomeComponent,
     AboutComponent,
     HeroesComponent,
-    HeroeComponent
+    HeroeComponent,
+    HeroesBuscarComponent,
+    HeroeTarjetaComponent
   ],
   imports: [
     BrowserModule,
