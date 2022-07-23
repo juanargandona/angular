@@ -8,7 +8,7 @@ import { timeout } from 'rxjs';
 })
 export class AppComponent {
   nombre: string = 'Capitan America';
-  nombre2: string = 'Juan Argandoña';
+  nombre2: string = 'JUAN ARgandoña';
 
   arreglo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 

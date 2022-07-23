@@ -1,1 +1,22 @@
-<p>home works!</p>
+<!-- <ul>
+    <li *ngFor="let pais of paises ">
+        {{pais.name }} - {{ pais.population}}
+    </li>
+
+</ul> -->
+
+
+<!-- <div class="card" *ngFor="let cancion of nuevasCanciones">
+        <img [src]="cancion.images | noimage" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{ cancion.name}}</h5>
+            <p class="card-text">{{ cancion.artists[0].name }}</p>
+            <p class="card-text">
+                <span *ngFor="let artista of cancion.artists"><span class="badge bg-primary">{{ artista.name}}</span></span>
+            </p>
+
+        </div>
+    </div> -->
+
+<app-loading *ngIf="loading"></app-loading>
+<app-tarjeta [items]="nuevasCanciones"></app-tarjeta>

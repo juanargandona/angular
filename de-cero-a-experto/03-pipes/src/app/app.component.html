@@ -26,9 +26,14 @@
           <td>{{ nombre | lowercase}}</td>
         </tr>
         <tr>
-          <td>{{ nombre }}</td>
-          <td>Pipe personalizado</td>
-          <td>{{ nombre2 | lowercase}}</td>
+          <td>{{ nombre2}}</td>
+          <td>capitalizado:true</td>
+          <td>{{ nombre2 | capitalizado: true}}</td>
+        </tr>
+        <tr>
+          <td>{{ nombre2}}</td>
+          <td>capitalizado:false</td>
+          <td>{{ nombre2 | capitalizado: false}}</td>
         </tr>
         <tr>
           <td>{{ nombre }}</td>
