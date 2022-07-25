@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { map } from "rxjs/operators";
+import { map, timeInterval } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,7 @@ import { map } from "rxjs/operators";
 export class SpotifyService {
 
   releases: any[] = [];
+  token: any;
 
   constructor(private http: HttpClient) {
     console.log("SpotifyService Listo")
@@ -51,17 +52,49 @@ export class SpotifyService {
 
   getArtista(id: string) {
 
-    return this.getQuery(`artists/${id}`);//.pipe(map((data: any) => data['artists'].items));
+    return this.getQuery(`artists/${id}`);
+  }
+
+  getTopTracks(id: string) {
+
+    return this.getQuery(`artists/${id}/top-tracks?country=us`)
+      .pipe(map((data: any) => data['tracks']));
   }
 
   getQuery(query: string) {
+
     const headers = new HttpHeaders({
-      'Authorization': 'Bearer BQBvGUAswMAdoyUssd66O-akUN9gI24H0Vlivtjyhow-UHtL-ktodcdB0XVvjTX7rP-saWYNeXwJ8MATrs8qJ1-pf1N6phe2UGUnp7vozwbgVc__Am8',
+      'Authorization': 'Bearer BQDrJ4jBq1viLifsSRcG8rUTPJSd59xETt7zO_LZmz51otesDT7TRefICFO49184lUunvZWAwCLgC-AwlFKjOBbwRQGrr5x5THu7iCZxqCV6Jc5iX-o',
     });
+    console.log("headers: ", headers)
     const URL = `https://api.spotify.com/v1/${query}`;
 
     return this.http.get(URL, { headers })
+  }
 
+  getQueryFailed(query: string) {
+    const CLIENT_ID = 'd6b55734aa3f4b49af89ae8023b6c69e';
+    const CLIENT_SECRET = '4659ca881ead4eed81c45197f071db34';
+    const URL_TOKEN = `http://localhost:3000/spotify/${CLIENT_ID}/${CLIENT_SECRET}`
+    console.log(URL_TOKEN)
+    this.http.get(URL_TOKEN).subscribe((data: any) => {
+      this.token = data['access_token']
+      console.log("this.token: ", this.token)
+      const headers = new HttpHeaders({ 'Authorization': `Bearer ${this.token}` });
+      console.log("headers: ", headers)
+      const URL = `https://api.spotify.com/v1/${query}`;
+      return this.http.get(URL, { headers })
+    })
+
+  }
+
+  getToken(client_id: string, client_secret: string) {
+    const URL_TOKEN = `http://localhost:3000/spotify/${client_id}/${client_secret}`
+    console.log(URL_TOKEN)
+    this.http.get(URL_TOKEN).subscribe((data: any) => {
+      this.token = data['access_token']
+      console.log("this.token: ", this.token)
+    })
 
   }
 }
